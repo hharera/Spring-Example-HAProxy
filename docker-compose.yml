@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  world_db:
+    container_name: "example_db"
+    image: ghusta/postgres-world-db:2.6
+    ports:
+      - "8432:5432"
+  haproxy:
+    container_name: "example_haproxy"
+    build:
+      context: ./haproxy
+      dockerfile: Dockerfile
+networks:
+  clinico_backend_network:
+    driver: bridge
